@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../../database.sqlite"
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  name      String      @map("name")
+  email     String      @unique(map: "sqlite_autoindex_Users_1") @map("email")
+  password  String      @map("password")
+  role      String?     @default("user") @map("role")
+  createdAt DateTime?   @default(now()) @map("created_at")
+  Shipments Shipment[]
+
+  @@map("Users")
+}
+
+model Freight {
+  id            Int              @id @default(autoincrement())
+  name          String
+  description   String?
+  rate          Float
+  type          String?
+  weight_kg     Float?
+  image         String?
+  created_at    DateTime?        @default(now())
+  ShipmentItems ShipmentItem[]
+
+  @@map("Freight")
+}
+
+model Shipment {
+  id              Int            @id @default(autoincrement())
+  user_id         Int?
+  tracking_number String?        @unique
+  total_cost      Float
+  status          String?        @default("pending")
+  origin          String?
+  destination     String?
+  created_at      DateTime?      @default(now())
+  ShipmentItems   ShipmentItem[]
+  User            User?          @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("Shipments")
+}
+
+model ShipmentItem {
+  id          Int       @id @default(autoincrement())
+  shipment_id Int?
+  freight_id  Int?
+  quantity    Int
+  Freight     Freight?  @relation(fields: [freight_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Shipment    Shipment? @relation(fields: [shipment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("Shipment_Items")
+}

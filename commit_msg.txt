@@ -1,0 +1,1 @@
+Quantum Logistics Next.js App - Maps, i18n, UI improvements
