@@ -120,11 +120,40 @@ const translations: Translations = {
   toast_track_err: { en: 'Please enter a tracking number', ru: 'Пожалуйста, введите номер отслеживания' },
   toast_track_load: { en: 'Connecting to Quantum Network...', ru: 'Подключение к сети Quantum...' },
   toast_track_succ: { en: 'Cargo located: In Transit (Singapore Hub)', ru: 'Груз найден: В пути (Хаб Сингапур)' },
-  toast_maint: { en: 'Intelligence Center under maintenance', ru: 'Центр Интеллекта на техническом обслуживании' },
-  toast_comp: { en: 'Company profile coming soon', ru: 'Профиль компании скоро появится' },
   toast_details: { en: 'Details sent to your email', ru: 'Детали отправлены на ваш email' },
   toast_calc: { en: 'Calculating... Result will appear shortly!', ru: 'Рассчитываем... Результат скоро появится!' },
   toast_map: { en: 'Interactive Map loading...', ru: 'Загрузка интерактивной карты...' },
+
+  // About Modal
+  about_tag: { en: 'About Us', ru: 'О нас' },
+  about_title: { en: 'Quantum Logistics', ru: 'Quantum Logistics' },
+  about_subtitle: { en: 'Strategic partner in global supply chains', ru: 'Стратегический партнёр в глобальных цепях поставок' },
+  about_desc1: {
+    en: 'Quantum Logistics was founded in 2009 and has grown into one of Central Asia\'s leading logistics companies. We combine cutting-edge technology with 17 years of expertise to deliver unmatched freight solutions for businesses of any scale.',
+    ru: 'Quantum Logistics основана в 2009 году и выросла в одну из ведущих логистических компаний Центральной Азии. Мы объединяем передовые технологии с 17-летним опытом для предоставления непревзойдённых логистических решений для бизнеса любого масштаба.',
+  },
+  about_desc2: {
+    en: 'Our mission is to make global trade seamless, sustainable and smart — powered by AI-driven routing, a 170+ truck fleet, and 8 strategically located warehouse hubs across Kazakhstan and beyond.',
+    ru: 'Наша миссия — сделать глобальную торговлю бесшовной, устойчивой и умной, используя маршрутизацию на базе ИИ, флот из 170+ грузовиков и 8 стратегически расположенных складских комплексов по Казахстану и за его пределами.',
+  },
+  about_stat1_val: { en: '17', ru: '17' },
+  about_stat1_label: { en: 'Years on market', ru: 'Лет на рынке' },
+  about_stat2_val: { en: '4', ru: '4' },
+  about_stat2_label: { en: 'Countries', ru: 'Страны' },
+  about_stat3_val: { en: '170+', ru: '170+' },
+  about_stat3_label: { en: 'Own trucks', ru: 'Собственных грузовиков' },
+  about_stat4_val: { en: '8', ru: '8' },
+  about_stat4_label: { en: 'Warehouse hubs', ru: 'Складских хабов' },
+  about_values_title: { en: 'Our Values', ru: 'Наши ценности' },
+  about_val1_title: { en: 'Reliability', ru: 'Надёжность' },
+  about_val1_desc: { en: 'Full cargo insurance and zero tolerance for delays.', ru: 'Полное страхование груза и нулевая терпимость к задержкам.' },
+  about_val2_title: { en: 'Innovation', ru: 'Инновации' },
+  about_val2_desc: { en: 'AI-driven routing and robotic warehouse systems.', ru: 'ИИ-маршрутизация и роботизированные складские системы.' },
+  about_val3_title: { en: 'Partnership', ru: 'Партнёрство' },
+  about_val3_desc: { en: 'Long-term relationships built on trust and transparency.', ru: 'Долгосрочные отношения, основанные на доверии и прозрачности.' },
+  about_val4_title: { en: 'Excellence', ru: 'Превосходство' },
+  about_val4_desc: { en: 'Award-winning logistics certified to ISO 9001 standards.', ru: 'Отмеченная наградами логистика, сертифицированная по ISO 9001.' },
+  about_close_btn: { en: 'Close', ru: 'Закрыть' },
 };
 
 interface LanguageContextType {
