@@ -7,8 +7,6 @@ import { toast } from 'sonner';
 import AuthModal from './components/AuthModal';
 import RequestModal from './components/RequestModal';
 import MapModal from './components/MapModal';
-import ServiceInfoModal from './components/ServiceInfoModal';
-import AboutModal from './components/AboutModal';
 import { useLanguage } from './context/LanguageContext';
 
 export default function Home() {
@@ -18,11 +16,6 @@ export default function Home() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isReqModalOpen, setIsReqModalOpen] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
-  const [serviceInfoModal, setServiceInfoModal] = useState<{ open: boolean; key: 'air' | 'sea' | 'warehouse' | null }>({
-    open: false,
-    key: null,
-  });
-  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
 
   const handleTrack = () => {
     if (!trackingId) {
@@ -52,12 +45,6 @@ export default function Home() {
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
       <RequestModal isOpen={isReqModalOpen} onClose={() => setIsReqModalOpen(false)} />
       <MapModal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)} />
-      <ServiceInfoModal
-        isOpen={serviceInfoModal.open}
-        serviceKey={serviceInfoModal.key}
-        onClose={() => setServiceInfoModal({ open: false, key: null })}
-      />
-      <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
 
       {/* Floating Action Button */}
       <button 
@@ -84,15 +71,20 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#94A3B8]">
             <button onClick={() => scrollToSection('solutions')} className="hover:text-[#22D3EE] transition-colors">{t('nav_solutions')}</button>
             <button onClick={() => scrollToSection('network')} className="hover:text-[#22D3EE] transition-colors">{t('nav_network')}</button>
-            <button onClick={() => setIsAboutModalOpen(true)} className="hover:text-[#22D3EE] transition-colors">{t('nav_company')}</button>
+            <button onClick={() => toast.info(t('toast_maint'))} className="hover:text-[#22D3EE] transition-colors">{t('nav_intelligence')}</button>
+            <button onClick={() => toast.info(t('toast_comp'))} className="hover:text-[#22D3EE] transition-colors">{t('nav_company')}</button>
           </div>
 
           <div className="flex items-center gap-4">
             <button 
-              onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
+              onClick={() => {
+                if (language === 'en') setLanguage('ru');
+                else if (language === 'ru') setLanguage('kk');
+                else setLanguage('en');
+              }}
               className="text-xs font-bold uppercase tracking-widest text-[#94A3B8] hover:text-white transition-colors"
             >
-              {language === 'en' ? 'RU' : 'EN'}
+              {language === 'en' ? 'RU' : language === 'ru' ? 'ҚАЗ' : 'EN'}
             </button>
             <button 
               onClick={() => setIsAuthModalOpen(true)}
@@ -249,11 +241,11 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {([
-            { icon: Plane, title: t('sol_air'), desc: t('sol_air_desc'), key: 'air' as const },
-            { icon: Ship, title: t('sol_sea'), desc: t('sol_sea_desc'), key: 'sea' as const },
-            { icon: Box, title: t('sol_warehouse'), desc: t('sol_warehouse_desc'), key: 'warehouse' as const }
-          ]).map((item, idx) => (
+          {[
+            { icon: Plane, title: t('sol_air'), desc: t('sol_air_desc') },
+            { icon: Ship, title: t('sol_sea'), desc: t('sol_sea_desc') },
+            { icon: Box, title: t('sol_warehouse'), desc: t('sol_warehouse_desc') }
+          ].map((item, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -267,11 +259,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-3">{item.title}</h3>
               <p className="text-[#94A3B8] text-sm leading-relaxed mb-6">{item.desc}</p>
-              <button
-                onClick={() => setServiceInfoModal({ open: true, key: item.key })}
-                className="flex items-center gap-2 text-[#22D3EE] font-bold text-sm hover:gap-3 transition-all group/btn"
-              >
-                {t('sol_explore')} <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              <button onClick={() => toast.success(t('toast_details'))} className="flex items-center gap-2 text-[#22D3EE] font-bold text-sm">
+                {t('sol_explore')} <ArrowRight className="w-4 h-4" />
               </button>
             </motion.div>
           ))}

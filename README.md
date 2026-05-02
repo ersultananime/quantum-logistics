@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QUANTUM LOGISTICS 🚀
+*Next-Gen Logistics Platform*
 
-## Getting Started
+## 📝 Описание проекта
+**Quantum Logistics** — это современная высокотехнологичная платформа для управления логистическими процессами. Проект сочетает в себе элегантный футуристичный интерфейс с мощным функционалом для отслеживания грузов, расчета стоимости перевозок и управления клиентскими запросами.
 
-First, run the development server:
+Платформа ориентирована как на B2B, так и на индивидуальных клиентов, предлагая прозрачность и скорость доставки за счет использования современных технологий маршрутизации.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Основные возможности
+- **Интеллектуальное отслеживание**: Моментальный поиск статуса груза по номеру накладной с имитацией реального времени.
+- **Мультиязычность**: Полная поддержка русского и английского языков (i18n реализован через React Context).
+- **Умный калькулятор**: Расчет стоимости различных типов перевозок (FTL, LTL, FCL, Air Express, Contract Logistics).
+- **Интерактивная карта**: Визуализация глобальной сети хабов с конкретными адресами в Казахстане (Алматы, Астана, Шымкент).
+- **Отраслевые решения**: Специализированные логистические цепочки для электроники, фармацевтики, ритейла и e-commerce.
+- **Клиентский портал**: Система авторизации для клиентов и курьеров с защитой данных через bcrypt.
+- **Система заявок**: Интегрированная форма обратной связи для получения индивидуальных бизнес-предложений.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Технологический стек
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript.
+- **Styling**: Tailwind CSS 4 (использование современных Glassmorphism эффектов).
+- **Animations**: Framer Motion (плавные переходы и динамические визуальные элементы).
+- **Icons**: Lucide React.
+- **Backend**: Next.js API Routes (Serverless функции).
+- **Database**: SQLite & Prisma ORM для надежного хранения данных о пользователях и отправлениях.
+- **Notifications**: Sonner (элегантные toast-уведомления).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Быстрый старт
+### Предварительные требования
+- Node.js 20+
+- npm / yarn / pnpm
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Установка
+1. Клонируйте репозиторий.
+2. Установите зависимости:
+   ```bash
+   npm install
+   ```
+3. Настройте базу данных:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+4. Запустите сервер разработки:
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+## 📂 Структура проекта
+- `app/` — Основные страницы и логика приложения (Next.js App Router).
+- `app/api/` — API эндпоинты (авторизация, управление заказами).
+- `app/components/` — Модульные UI компоненты (AuthModal, MapModal, RequestModal и др.).
+- `app/context/` — Глобальное состояние приложения (например, `LanguageContext`).
+- `prisma/` — Схема базы данных (`schema.prisma`) и конфигурация SQLite.
+- `public/` — Статические ресурсы (логотипы, изображения).
+- `lib/` — Вспомогательные утилиты и инициализация Prisma клиента.
 
-To learn more about Next.js, take a look at the following resources:
+## 📖 Подробное объяснение сайта
+Сайт спроектирован как высокопроизводительное Single Page Application (SPA).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Hero-секция**: Центральный элемент сайта с анимированным глобусом. Содержит поисковую строку для мгновенного трекинга грузов.
+2. **Панель статистики**: Динамический блок, показывающий масштаб компании: 17 лет опыта, 4 страны присутствия, собственный парк из 170+ грузовиков и 8 крупных хабов.
+3. **Секция решений (Solutions)**: Интерактивные карточки, описывающие ключевые сервисы компании: Авиаперевозки (48 часов), Морская логистика (оптимизация маршрутов ИИ) и Умные склады (автоматизация фулфилмента).
+4. **Калькулятор эффективности**: Функциональный блок, где пользователь может выбрать параметры доставки и мгновенно отправить запрос на расчет.
+5. **Глобальная сеть**: Интерактивная секция, которая при клике открывает карту с точными адресами пунктов приема (например, ул. Тургут Озала в Алматы или пр. Мангилик Ел в Астане).
+6. **Полный цикл (Full Cycle)**: Контентный блок, объясняющий стратегическое значение компании в глобальной цепи поставок.
+7. **Модальные окна**:
+   - `AuthModal`: Реализует логику входа и регистрации. Поддерживает переключение между ролями "Клиент" и "Курьер".
+   - `RequestModal`: Профессиональная форма захвата лидов, собирающая информацию о типе услуги и контактных данных.
+   - `MapModal`: Удобный справочник по всем доступным локациям хабов.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Created for Efficiency. Engineered for Excellence.*
